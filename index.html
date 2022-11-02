@@ -82,7 +82,8 @@
       var dd = today.getDate();
       var date =dd+"-"+mm+"-"+yy;
       var day = today.getDay();
-      let hour = today.getHours();
+      let h = today.getHours();
+      let hour = Math.abs(12 - h);
       let min = today.getMinutes();
       let period = " "
       let periodHour = 0;
@@ -112,27 +113,27 @@
         default: ""
       }
 
-      if( (hour>13 & min <50)& (hour<15 & min<50)){
+      if((hour == 2 & min <50)){
         period ="1st Hour";
         periodHour =0;
       }
-      else if((hour>13 & min> 50)& (hour< 16 & min< 40)){
+      else if((hour == 2 & min>50) || (hour == 3 & min<40)){
         period ="2nd Hour";
         periodHour =1;
       }
-      else if((hour>14 & min >40)&(hour<17 & min< 30)){
+      else if((hour == 3 & min >40) || (hour == 4 & min < 30)){
        period ="3rd Hour";
        periodHour =2;
       }
-      else if((hour>15 & min >30)&(hour<18 & min<20)){
+      else if((hour == 4 & min >30) || (hour == 5 & min< 15)){
         period ="4th Hour";
         periodHour =3;
       }
-      else if((hour>16 & min>20)&(hour<18)){
+      else if((hour == 5 && min > 15) && (hour < 6)){
         period ="5th Hour";
         periodHour =4;
       }
-      else if(hour>18){
+      else if(hour>6){
         period = "Day end";
         periodHour = -1;
       }
@@ -140,7 +141,6 @@
         period = "Starts at 2PM";
         periodHour = -1;
       }
-
 
 
       let x = document.getElementsByTagName("tr");
