@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Mock-Interview</title>
+    <link rel="stylesheet" href="test.css" />
+  </head>
+  <body>
+      <table border="1" cellspacing ="0" id="table">
+        <tr>
+          <th colspan="6">II M.Sc.CS Time Table</th>
+        </tr>
+        <tr id="hourRow">
+          <th>Day/Hours</th>
+          <th>I</th>
+          <th>II</th>
+          <th>III</th>
+          <th>IV</th>
+          <th>V</th>
+        </tr>
+        <tr id="monday">
+          <th>MONDAY</th>
+          <td>Compiler Design</td>
+          <td>Artificial Intelligence</td>
+          <td>Cryptography</td>
+          <td>Cloud Computing</td>
+          <td>Information Security</td>
+        </tr>
+        <tr id="tuesday">
+          <th>TUESDAY</th>
+          <td>Mini Lab</td>
+          <td>Artificial Intelligence</td>
+          <td>Compiler Design</td>
+          <td>Information Security</td>
+          <td>Cloud Computing</td>
+        </tr>
+        <tr id="wednesday">
+          <th>WEDNESDAY</th>
+          <td>Cryptography</td>
+          <td>Compiler Design</td>
+          <td>Mini Lab</td>
+          <td>Artificial Intelligence</td>
+          <td>Information Security</td>
+        </tr>
+        <tr id="thursday">
+          <th>THURSDAY</th>
+          <td>Cloud Computing</td>
+          <td>Artificial Intelligence</td>
+          <td>Cryptography</td>
+          <td>Mini Lab</td>
+          <td>Compiler Design</td>
+        </tr>
+        <tr id="friday">
+          <th >FRIDAY</th>
+          <td>Information Security</td>
+          <td>Compiler Design</td>
+          <td>Cryptography</td>
+          <td>Cloud Computing</td>
+          <td>Mini Lab</td>
+        </tr>
+        <tr id="saturday">
+          <th>SATURDAY</th>
+          <td>Artificial Intelligence</td>
+          <td>Information Security</td>
+          <td>Cloud Computing</td>
+          <td>Cryptography</td>
+          <td>Mini Lab</td>
+        </tr>
+      </table>
+    <div class="contents">
+      <h1 class="h1">date : day</h1>
+      <h2>hour</h2>
+      <h1>Implement your Smart Work in Your Hard Work to Get better results...!</h1>
+    </div>
+
+
+  </body>
+  <script type="text/javascript">
+      var today = new Date();
+      var yy = today.getFullYear();
+      var mm = today.getMonth()+1;
+      var dd = today.getDate();
+      var date =dd+"-"+mm+"-"+yy;
+      var day = today.getDay();
+      let hour = today.getHours();
+      let min = today.getMinutes();
+      let period = " "
+      let periodHour = 0;
+      let setDay = " ";
+      switch (day) {
+        case 0:
+          setDay = "Sunday";
+          break;
+        case 1:
+          setDay = "Monday";
+          break;
+        case 2:
+          setDay = "Tuesday";
+          break;
+        case 3:
+          setDay = "Wednesday";
+          break;
+        case 4:
+          setDay = "Thursday";
+          break;
+        case 5:
+          setDay = "friday";
+          break;
+        case 6:
+          setDay = "Saturday";
+          break;
+        default: ""
+      }
+
+      if( (hour>13 & min <50)& (hour<15 & min<50)){
+        period ="1st Hour";
+        periodHour =0;
+      }
+      else if((hour>13 & min> 50)& (hour< 16 & min< 40)){
+        period ="2nd Hour";
+        periodHour =1;
+      }
+      else if((hour>14 & min >40)&(hour<17 & min< 30)){
+       period ="3rd Hour";
+       periodHour =2;
+      }
+      else if((hour>15 & min >30)&(hour<18 & min<20)){
+        period ="4th Hour";
+        periodHour =3;
+      }
+      else if((hour>16 & min>20)&(hour<18)){
+        period ="5th Hour";
+        periodHour =4;
+      }
+      else if(hour>18){
+        period = "Day end";
+        periodHour = -1;
+      }
+      else{
+        period = "Starts at 2PM";
+        periodHour = -1;
+      }
+
+
+
+      let x = document.getElementsByTagName("tr");
+
+
+      x[day + 1].style.backgroundColor = "black";
+      x[day + 1].style.color = "white";
+     let h1 = document.getElementsByClassName("contents")[0].getElementsByTagName("h1")[0].innerHTML = date + " " + setDay ;
+     let h2 = document.getElementsByClassName("contents")[0].getElementsByTagName("h2")[0].innerHTML = "Hour: "+period ;
+     if(periodHour>=0){
+         let sub = x[day + 1].getElementsByTagName('td')[periodHour].innerHTML;
+         x[day + 1].getElementsByTagName('td')[periodHour].style.backgroundColor = "red";
+        let h1Sub = document.getElementsByClassName("contents")[0].getElementsByTagName("h1")[1].innerHTML = "Subject: "+ sub;
+     }
+
+  </script>
+</html>
